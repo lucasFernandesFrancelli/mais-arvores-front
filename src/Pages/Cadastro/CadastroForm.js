@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./layout/index.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import fundoDesfocado from "./assets/fundoDesfocado1.jpg";
+import { createUser } from "../../services/api";
+import { AuthContext } from "../../contexts/auth";
 
 const schema = yup.object({
   username: yup.string().required("O nome de usuário é obrigatório"),
@@ -26,17 +27,20 @@ const CadastroForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { register } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("submit", { username, email, password });
+    register(username, email, password);
   };
 
   return (
     <div className="container">
-      <h1 className="title">CADASTRO</h1>
       <div className="cadastro-form">
         <form onSubmit={handleSubmit}>
+          <h1>CADASTRO</h1>
+
           <div className="cadastro-label">
             <label>
               Nome de usuário

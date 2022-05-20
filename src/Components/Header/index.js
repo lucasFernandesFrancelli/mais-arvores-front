@@ -1,7 +1,7 @@
 import "./../../index.css";
 import logoCor from "./../../Components/logocor.png";
 
-function Header() {
+const Header = () => {
   return (
     <div className="header-config">
       <div className="logo">
@@ -20,6 +20,6 @@ function Header() {
       </nav>
     </div>
   );
-}
+};
 
 export default Header;

@@ -2,7 +2,6 @@ import Footer from "../../Components/Footer";
 import carrossel from "./assets/carrossel.png";
 import planta from "./assets/planta.png";
 import mao from "./assets/mao.jpg";
-import plantinha from "./assets/plantinha.jpg";
 
 import "./layout/index.css";
 import { useEffect, useContext } from "react";
@@ -37,9 +36,6 @@ function Home() {
           </div>
           <div className="item">
             <img src={mao} />
-          </div>
-          <div className="item">
-            <img src={plantinha} />
           </div>
 
           <div className="navigation-auto">

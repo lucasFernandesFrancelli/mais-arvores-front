@@ -1,12 +1,12 @@
 
 
 #items-wrapper {
-    height: 80vh;
-    width: 99.3vw;
+    height: 100vh;
+    width: 99vw;
     display: grid;
     place-items: center;
     position: relative;
-    z-index: 0;
+    z-index: -1;
     
 }
 #items-wrapper img {
@@ -35,7 +35,7 @@
 .item {
     flex: none;
     width: 100%;
-    height: 48rem;
+    height: 100%;
     scroll-snap-align: start;
     pointer-events: none;
     
