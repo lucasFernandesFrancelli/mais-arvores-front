@@ -8,6 +8,10 @@ export const createSession = async (email, password) => {
   return api.post("/users/login", { email, password });
 };
 
+export const createUser = async (username, email, password) => {
+  return api.post("/users", { username, email, password });
+};
+
 export const getProducts = async () => {
   return api.get("/products");
 };

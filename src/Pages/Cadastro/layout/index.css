@@ -2,7 +2,17 @@
     height: 73vh;
     width: 35vw;
     margin: auto;
-    margin-top: 1%;
+    margin-top: 5%;
+}
+
+.cadastro-form h1 {
+    text-align: center;
+    padding-top: 2%;
+    height: 8vh;
+    font-size: 300%;
+    color: green;
+    animation-name: move;
+    animation-duration: 2s;
 }
 
 .cadastro-form form {
@@ -51,12 +61,6 @@
 .cadastro-input input:hover {
     border: 1px solid green;
 }
-span {
-    color: red;
-    font-size: 0.8em;
-    margin-top: 5%;
-    position: absolute;
-}
 
 
 .submit-button button {
@@ -72,26 +76,7 @@ span {
     animation-duration: 2s;
     
 }
-.container {
-    background-image: url('./../assets/fundoDesfocado1.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 89vh;
-}
 
-.container img {
-    width: 100%;
-    height: 100%;
-}
-
-.title {
-    text-align: center;
-    padding-top: 2%;
-    background-color: #579200;
-    height: 8vh;
-    color: white;
-    font-size: 300%
-}
 
 .submit-button {
     padding-top: 7%;

@@ -1,8 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { api, createSession } from "../services/api";
+import { api, createSession, createUser } from "../services/api";
 
 export const AuthContext = createContext();
 
@@ -31,8 +32,17 @@ export const AuthProvider = ({ children }) => {
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
+    toast.success("Login bem sucedido");
     setToken(token);
     navigate("/");
+  };
+
+  const register = async (username, email, password) => {
+    await createUser(username, email, password);
+
+    toast.success("Login bem sucedido");
+
+    navigate("/login");
   };
 
   const logout = () => {
@@ -43,7 +53,14 @@ export const AuthProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider
-      value={{ authenticated: !!token, token, loading, login, logout }}
+      value={{
+        authenticated: !!token,
+        token,
+        loading,
+        login,
+        register,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

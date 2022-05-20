@@ -10,6 +10,8 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import { AuthProvider, AuthContext } from "./contexts/auth";
 import { useContext } from "react";
+import { toast } from "react-toastify";
+import Navbar from "./Components/Navbar";
 
 const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -28,6 +30,7 @@ const AppRoutes = () => {
 
   return (
     <Router>
+      <Navbar />
       <AuthProvider>
         <Routes>
           <Route

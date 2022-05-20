@@ -4,7 +4,7 @@ import bem_vindo from "./assets/bem_vindo.png";
 import "./layout/index.css";
 
 const LoginForm = () => {
-  const { authenticated, login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +17,6 @@ const LoginForm = () => {
 
   return (
     <div className="container">
-      <h1 className="title">LOGIN</h1>
-      <p>{String(authenticated)}</p>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div className="form-bg">

@@ -2,10 +2,23 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 
+body {
+  background-image: url('./Pages/Cadastro/assets/fundoDesfocado1.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 
-
+.home, .products {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
 
 .header-config {
   background-color: #BFE063;
@@ -20,14 +33,14 @@
 }
 
 .footer-config {
-  background-color: #BFE063;
+  background-color: #579200;
   height: 13vh;
   text-align: center;
   display: flex;
   justify-content: center;
 }
 
-nav ul {
+/* nav ul {
   padding-top: 4em;
   padding-right: 5em;
   list-style: none;
@@ -51,10 +64,15 @@ a:hover {
 .logo {
   margin-left: 3%;
   margin-top: -1%;
-}
+} */
 
 img {
   position: relative;
   width: 8%;
   float: left;
 }
+
+.footer-config span {
+  margin: auto;
+}
+
