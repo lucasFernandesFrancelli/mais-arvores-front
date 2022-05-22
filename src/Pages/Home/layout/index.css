@@ -1,7 +1,7 @@
 
 
 #items-wrapper {
-    height: 100vh;
+    height: 90vh;
     width: 99vw;
     display: grid;
     place-items: center;
@@ -20,7 +20,7 @@
     overflow-x: auto;
     height: 100%;
     width: 100%;
-    margin-top: -40px;
+    margin-top: -60px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -63,7 +63,7 @@
 
 
 .sobre {
-    margin-top: 7%;
+    margin-top: 5%;
     margin-right: 10%;
 }
 

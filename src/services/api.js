@@ -15,3 +15,7 @@ export const createUser = async (username, email, password) => {
 export const getProducts = async () => {
   return api.get("/products");
 };
+
+export const getProductsImage = async () => {
+  return api.get("/products/download/");
+};
