@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (username, email, password) => {
     await createUser(username, email, password);
 
-    toast.success("Login bem sucedido");
+    toast.success("Usuário registrado com sucesso");
 
     navigate("/login");
   };
