@@ -4,58 +4,52 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Cadastro from "./Pages/Cadastro";
-import Produto from "./Pages/Produtos";
+import { useContext } from "react";
+
+import { AuthContext } from "./contexts/auth";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import { AuthProvider, AuthContext } from "./contexts/auth";
-import { useContext } from "react";
-import { toast } from "react-toastify";
-import Navbar from "./Components/Navbar";
+import Register from "./Pages/Register";
+import Products from "./Pages/Products";
 
-const AppRoutes = () => {
-  const Private = ({ children }) => {
-    const { authenticated, loading } = useContext(AuthContext);
+function PrivateRoute({ children }) {
+  const { authenticated, loading } = useContext(AuthContext);
 
-    if (loading) {
-      return <div className="loading">Carregando</div>;
-    }
+  if (loading) {
+    return <div className="loading">Carregando</div>;
+  }
 
-    if (!authenticated) {
-      return <Navigate to="/login" />;
-    }
+  if (!authenticated) {
+    return <Navigate to="/login" />;
+  }
 
-    return children;
-  };
+  return children;
+}
 
+export default function AppRoutes() {
   return (
     <Router>
-      <Navbar />
-      <AuthProvider>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <Private>
-                <Home />
-              </Private>
-            }
-          />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/produtos"
-            element={
-              <Private>
-                <Produto />
-              </Private>
-            }
-          />
-        </Routes>
-      </AuthProvider>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <Products />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </Router>
   );
-};
-
-export default AppRoutes;
+}

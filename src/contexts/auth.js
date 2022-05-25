@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -7,8 +7,8 @@ import { api, createSession, createUser } from "../services/api";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const navigate = useNavigate();
+export function AuthProvider({ children }) {
+  // const navigate = useNavigate();
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     toast.success("Login bem sucedido");
     setToken(token);
-    navigate("/");
+    // navigate("/");
   };
 
   const register = async (username, email, password) => {
@@ -42,15 +42,16 @@ export const AuthProvider = ({ children }) => {
 
     toast.success("Usuário registrado com sucesso");
 
-    navigate("/login");
+    // navigate("/login");
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     api.defaults.headers.Authorization = null;
     setToken(null);
-    navigate("/");
+    // navigate("/");
   };
+
   return (
     <AuthContext.Provider
       value={{
@@ -65,4 +66,6 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
+
+export const useAuth = () => useContext(AuthContext);

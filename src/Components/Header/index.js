@@ -1,25 +1,40 @@
-import "./../../index.css";
-import logoCor from "./../../Components/logocor.png";
+import React from "react";
+import { FaUser } from "react-icons/fa";
 
-const Header = () => {
+import "./index.css";
+import { useAuth } from "../../contexts/auth";
+
+export default function Navbar() {
+  const { token } = useAuth();
+
+  console.log(token);
+
   return (
-    <div className="header-config">
-      <div className="logo">
-        <a href="/">
-          <img src={logoCor}></img>
-        </a>
+    <header className="header">
+      <div className="header_logo">
+        <a href="/"></a>
       </div>
-      <nav>
-        <ul className="header-links">
+      <nav className="header_nav">
+        <ul className="header_nav_ul">
           <li>
-            <a href="/">home</a>
-            <a href="/produtos">produtos</a>
-            <a href="/login">login</a>
+            <a href="/">Home</a>
+          </li>
+          {token && (
+            <li>
+              <a href="/products">Produtos</a>
+            </li>
+          )}
+          <li>
+            {token ? (
+              <a href="/user">
+                <FaUser />
+              </a>
+            ) : (
+              <a href="/login">Login</a>
+            )}
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
-};
-
-export default Header;
+}
