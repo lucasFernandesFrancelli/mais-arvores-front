@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/auth";
 import wellcomeImg from "../../assets/login/wellcome.png";
 import "./styles.css";
 import { Header } from "../../Components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { login, token } = useContext(AuthContext);
@@ -59,7 +59,7 @@ export default function Login() {
           </div>
 
           <span>
-            Não possui uma conta? <a href="/register">Cadastre-se aqui!</a>
+            Não possui uma conta? <Link to="/register">Cadastre-se aqui!</Link>
           </span>
         </form>
       </main>

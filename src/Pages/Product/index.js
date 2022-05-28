@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Header } from "../../Components/Header";
+import { useCart } from "../../contexts/cart";
 import { api } from "../../services/api";
 import "./styles.css";
 
 export function Product() {
   const { id } = useParams();
+  const { addProduct, isProductInList } = useCart();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(0);
 
@@ -15,6 +17,10 @@ export function Product() {
       setProduct(data);
     });
   }, []);
+
+  function handleAddProductToCart() {
+    addProduct({ ...product, quantity: Number(quantity) });
+  }
 
   return (
     <>
@@ -34,10 +40,21 @@ export function Product() {
             onChange={(e) => {
               setQuantity(e.target.value);
             }}
+            value={quantity}
           ></input>
-          <button className="product_detail_button">
-            Adicionar ao carrinho
-          </button>
+          {!isProductInList(product?.id) ? (
+            <button
+              onClick={handleAddProductToCart}
+              disabled={!Number(quantity)}
+              className="product_detail_button"
+            >
+              Adicionar ao carrinho
+            </button>
+          ) : (
+            <Link to="/cart" className="product_detail_button_cart">
+              Ver carrinho
+            </Link>
+          )}
         </div>
       </main>
     </>

@@ -13,6 +13,8 @@ import Register from "./Pages/Register";
 import Products from "./Pages/Products";
 import { Product } from "./Pages/Product";
 import { User } from "./Pages/User";
+import { CartContextProvider } from "./contexts/cart";
+import { Cart } from "./Pages/Cart";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useContext(AuthContext);
@@ -32,35 +34,45 @@ export default function AppRoutes() {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/products"
-            element={
-              <PrivateRoute>
-                <Products />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/product/:id"
-            element={
-              <PrivateRoute>
-                <Product />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user"
-            element={
-              <PrivateRoute>
-                <User />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
+        <CartContextProvider>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/products"
+              element={
+                <PrivateRoute>
+                  <Products />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/product/:id"
+              element={
+                <PrivateRoute>
+                  <Product />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user"
+              element={
+                <PrivateRoute>
+                  <User />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </CartContextProvider>
       </AuthProvider>
     </Router>
   );

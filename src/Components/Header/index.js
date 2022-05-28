@@ -1,8 +1,9 @@
 import React from "react";
-import { FaUser } from "react-icons/fa";
+import { FaCartPlus, FaUser } from "react-icons/fa";
 
 import "./index.css";
 import { useAuth } from "../../contexts/auth";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const { token } = useAuth();
@@ -10,25 +11,32 @@ export function Header() {
   return (
     <header className="header">
       <div className="header_logo">
-        <a href="/"></a>
+        <Link to="/"></Link>
       </div>
       <nav className="header_nav">
         <ul className="header_nav_ul">
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           {token && (
             <li>
-              <a href="/products">Produtos</a>
+              <Link to="/products">Produtos</Link>
             </li>
           )}
           <li>
             {token ? (
-              <a href="/user">
+              <Link to="/user">
                 <FaUser />
-              </a>
+              </Link>
             ) : (
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
+            )}
+          </li>
+          <li>
+            {token && (
+              <Link to="/cart">
+                <FaCartPlus />
+              </Link>
             )}
           </li>
         </ul>

@@ -31,7 +31,7 @@
   font-size: 2rem;
 }
 
-.product_detail_button {
+.product_detail_button, .product_detail_button_cart {
   background-color: rgb(77, 165, 77);
   border: none;
   border-radius: 1.3rem;
@@ -39,10 +39,15 @@
   padding: 1rem 2rem;
   color: #fff;
   transition: background-color 1.2s;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
-.product_detail_button:hover {
+.product_detail_button:hover, .product_detail_button_cart:hover {
   background-color: green;
+  text-decoration: none;
+  color: #fff;
 }
 
 .product_detail input {
@@ -53,6 +58,13 @@
   border-radius: 15px;
   margin-bottom: 5rem;
 }
+
+.product_detail_button:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
+
 
 @media (max-width: 1280px) {
   .product {
