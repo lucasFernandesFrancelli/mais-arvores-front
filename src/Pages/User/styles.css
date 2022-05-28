@@ -1,0 +1,30 @@
+
+
+
+.user {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  gap: 30px;
+}
+
+.user_logout {
+  background: rgb(231, 96, 96);
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  width: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.user_logout:hover {
+  background: rgb(185, 74, 74);
+}
+
+.user_detail p {
+  text-align: center;
+}

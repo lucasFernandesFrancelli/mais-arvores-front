@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import * as yup from "yup";
+import { Header } from "../../Components/Header";
 import { AuthContext } from "../../contexts/auth";
 import "./styles.css";
 
@@ -34,67 +35,70 @@ export default function Register() {
   };
 
   return (
-    <main className="register">
-      <div className="register_form">
-        <form onSubmit={handleSubmit}>
-          <h1>CADASTRO</h1>
+    <>
+      <Header />
+      <main className="register">
+        <div className="register_form">
+          <form onSubmit={handleSubmit}>
+            <h1>CADASTRO</h1>
 
-          <div className="register_form_fields">
-            <label>
-              Nome de usuário
-              <input
-                type="text"
-                name="username"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="nome de Usuario"
-              />
-              {/* <span>{errors.username?.message}</span> */}
-            </label>
-          </div>
+            <div className="register_form_fields">
+              <label>
+                Nome de usuário
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="nome de Usuario"
+                />
+                {/* <span>{errors.username?.message}</span> */}
+              </label>
+            </div>
 
-          <div className="register_form_fields">
-            <label>
-              E-mail
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="email@exemplo.com"
-              />
-              {/* <span>{errors.email?.message}</span> */}
-            </label>
-          </div>
+            <div className="register_form_fields">
+              <label>
+                E-mail
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="email@exemplo.com"
+                />
+                {/* <span>{errors.email?.message}</span> */}
+              </label>
+            </div>
 
-          <div className="register_form_fields">
-            <label>
-              Senha
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="password"
-              />
-              {/* {errors.password && (
+            <div className="register_form_fields">
+              <label>
+                Senha
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="password"
+                />
+                {/* {errors.password && (
             <span>
               *A senha precisa ter no mínimo 8 caracteres; <br /> *A senha
               precisa ter no mínimo uma letra maiúscula, <br />
               uma minúscula e um número
             </span>
           )} */}
-            </label>
-          </div>
+              </label>
+            </div>
 
-          <button className="register_form_button" type="submit">
-            CADASTRAR-SE
-          </button>
-        </form>
-      </div>
-    </main>
+            <button className="register_form_button" type="submit">
+              CADASTRAR-SE
+            </button>
+          </form>
+        </div>
+      </main>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 import React, { createContext, useState, useEffect, useContext } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -8,16 +9,21 @@ import { api, createSession, createUser } from "../services/api";
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const recoveredUser = localStorage.getItem("token");
+    const recoveredUserToken = localStorage.getItem("token");
 
-    if (recoveredUser) {
-      setToken(recoveredUser);
-      api.defaults.headers.Authorization = `Bearer ${recoveredUser}`;
+    if (recoveredUserToken) {
+      const decoded = jwtDecode(recoveredUserToken);
+      if (decoded.exp > Date.now() / 1000) {
+        setToken(recoveredUserToken);
+        setUserId(decoded.sub);
+        api.defaults.headers.Authorization = `Bearer ${recoveredUserToken}`;
+      }
     }
 
     setLoading(false);
@@ -34,7 +40,7 @@ export function AuthProvider({ children }) {
 
     toast.success("Login bem sucedido");
     setToken(token);
-    // navigate("/");
+    navigate("/");
   };
 
   const register = async (username, email, password) => {
@@ -42,14 +48,14 @@ export function AuthProvider({ children }) {
 
     toast.success("Usuário registrado com sucesso");
 
-    // navigate("/login");
+    navigate("/login");
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     api.defaults.headers.Authorization = null;
     setToken(null);
-    // navigate("/");
+    navigate("/");
   };
 
   return (
@@ -61,6 +67,7 @@ export function AuthProvider({ children }) {
         login,
         register,
         logout,
+        userId,
       }}
     >
       {children}

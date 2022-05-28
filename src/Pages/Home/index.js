@@ -3,10 +3,12 @@ import bannerImg from "../../assets/home/banner.png";
 import plantaImg from "../../assets/home/planta.png";
 
 import "./styles.css";
+import { Header } from "../../Components/Header";
 
 export default function Home() {
   return (
     <div>
+      <Header />
       <main className="home">
         <section className="home_banner">
           <img src={bannerImg} alt="Mais arvores" />

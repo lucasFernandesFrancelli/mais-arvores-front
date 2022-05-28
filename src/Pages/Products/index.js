@@ -2,6 +2,7 @@ import { getProducts } from "../../services/api";
 import { useEffect, useState } from "react";
 import Footer from "../../Components/Footer";
 import "./styles.css";
+import { Header } from "../../Components/Header";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -21,6 +22,7 @@ export default function Products() {
 
   return (
     <div>
+      <Header />
       <main className="products">
         <h1>Produtos</h1>
 

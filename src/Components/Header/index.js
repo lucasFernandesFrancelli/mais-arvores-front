@@ -4,10 +4,8 @@ import { FaUser } from "react-icons/fa";
 import "./index.css";
 import { useAuth } from "../../contexts/auth";
 
-export default function Navbar() {
+export function Header() {
   const { token } = useAuth();
-
-  console.log(token);
 
   return (
     <header className="header">

@@ -6,12 +6,13 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 
-import { AuthContext } from "./contexts/auth";
+import { AuthContext, AuthProvider } from "./contexts/auth";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Products from "./Pages/Products";
 import { Product } from "./Pages/Product";
+import { User } from "./Pages/User";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useContext(AuthContext);
@@ -30,35 +31,37 @@ function PrivateRoute({ children }) {
 export default function AppRoutes() {
   return (
     <Router>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/products"
-          element={
-            <PrivateRoute>
-              <Products />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/product/:id"
-          element={
-            <PrivateRoute>
-              <Product />
-            </PrivateRoute>
-          }
-        ></Route>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/products"
+            element={
+              <PrivateRoute>
+                <Products />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={
+              <PrivateRoute>
+                <Product />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <PrivateRoute>
+                <User />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
