@@ -11,6 +11,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Products from "./Pages/Products";
+import { Product } from "./Pages/Product";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useContext(AuthContext);
@@ -49,6 +50,14 @@ export default function AppRoutes() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/product/:id"
+          element={
+            <PrivateRoute>
+              <Product />
+            </PrivateRoute>
+          }
+        ></Route>
       </Routes>
     </Router>
   );
