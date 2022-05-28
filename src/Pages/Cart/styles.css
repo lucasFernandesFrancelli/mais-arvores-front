@@ -81,17 +81,19 @@
   font-size: 32px;
 }
 
-.cart_info button {
+.cart_info a {
   border: none;
   background: rgb(93, 161, 93);
   color: #fff;
   padding: 20px 25px;
   border-radius: 15px;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.cart_info button:hover {
+.cart_info a:hover {
   background: rgb(63, 105, 63);
+  text-decoration: none;
+  color: #fff;
 }
 
 @media (min-width: 500px) {

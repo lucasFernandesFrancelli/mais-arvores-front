@@ -5,7 +5,7 @@
 - [x] Criar tela para detalhe do produto
 - [x] Não deixar o usuário acessar a tela de login enquanto estiver autenticado
 - [x] Criar contexto do carrinho
-- [ ] Criar tela para finalização de compra
+- [x] Criar tela para finalização de compra
 - [x] Criar tela do carrinho
 - [x] Criar tela do gerenciamento do usuário
   - [x] Criar opção de deslogar

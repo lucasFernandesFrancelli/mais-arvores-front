@@ -15,6 +15,7 @@ import { Product } from "./Pages/Product";
 import { User } from "./Pages/User";
 import { CartContextProvider } from "./contexts/cart";
 import { Cart } from "./Pages/Cart";
+import { Purchase } from "./Pages/Purchase";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useContext(AuthContext);
@@ -68,6 +69,14 @@ export default function AppRoutes() {
               element={
                 <PrivateRoute>
                   <Cart />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/purchase"
+              element={
+                <PrivateRoute>
+                  <Purchase />
                 </PrivateRoute>
               }
             />

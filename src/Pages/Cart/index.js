@@ -21,7 +21,7 @@ export function Cart() {
               currency: "BRL",
             })}
           </span>
-          <button>Prosseguir com a compra</button>
+          <Link to="/purchase">Prosseguir com a compra</Link>
         </section>
         <section className="cart_list">
           <ul>
