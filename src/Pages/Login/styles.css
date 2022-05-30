@@ -43,7 +43,7 @@
   font-size: 1.3em;
 }
 
-.login_form_fields > input {
+.login_form_fields input {
   border-radius: 5px;
   border: 1px solid white;
   animation-name: fade;

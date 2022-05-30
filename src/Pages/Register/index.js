@@ -51,7 +51,7 @@ export default function Register() {
                   id="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="nome de Usuario"
+                  placeholder="nome_de_usuario"
                 />
                 {/* <span>{errors.username?.message}</span> */}
               </label>
