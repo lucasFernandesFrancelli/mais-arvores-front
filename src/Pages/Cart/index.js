@@ -15,7 +15,7 @@ export function Cart() {
         <h1>Confira o carrinho</h1>
         <section className="cart_info">
           <span>
-            Total:
+            Total: &nbsp;
             {Number(total).toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
