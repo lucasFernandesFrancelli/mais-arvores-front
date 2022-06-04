@@ -12,7 +12,8 @@
 - [x] Deslogar quando expirar o token
 
 - [ ] Poderá editar os dados do usuário
-- [ ] Criar tela para mudar status do pedido (usuário admin -> tela do usuário)
+- [ ] Mostrar informações do usuário ao realizar um pedido (endereço, etc)
+- [x] Criar tela para mudar status do pedido (usuário admin -> tela do usuário)
 - [x] Criar tela para visualizar os pedidos (usuário normal)
 - [x] Criar tela para visualizar informações do pedido
 - [ ] Tela de cadastro de produtos

@@ -33,7 +33,9 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = await createSession(email, password);
+    const response = await createSession(email, password)
+      .then(() => toast.success("Login bem sucedido"))
+      .catch(() => toast.error("Email ou senha incorretos"));
 
     const { token, isAdmin } = response.data;
 
@@ -42,7 +44,6 @@ export function AuthProvider({ children }) {
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    toast.success("Login bem sucedido");
     setToken(token);
     setIsAdmin(isAdmin);
     navigate("/");
@@ -57,7 +58,8 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("@mais-arvores/token");
+    localStorage.removeItem("@mais-arvores/admin");
     api.defaults.headers.Authorization = null;
     setToken(null);
     navigate("/");

@@ -9,12 +9,34 @@ import { Link } from "react-router-dom";
 
 export function Requests() {
   const [requests, setRequests] = useState([]);
+  const [requestStatus, setRequestStatus] = useState([]);
+  const { isAdmin } = useAuth();
 
   useEffect(() => {
-    api.get("/request/user").then((response) => {
+    api.get(`/request/${isAdmin ? "" : "user"}`).then((response) => {
       setRequests(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    api.get("request-status").then((response) => {
+      setRequestStatus(response.data);
+    });
+  }, []);
+
+  function handleRequestStatus(requestId, statusId) {
+    api
+      .put(`/request/${requestId}`, {
+        requestStatus: {
+          id: statusId,
+        },
+      })
+      .then(() => {
+        api.get(`/request/${isAdmin ? "" : "user"}`).then((response) => {
+          setRequests(response.data);
+        });
+      });
+  }
 
   return (
     <div>
@@ -42,7 +64,29 @@ export function Requests() {
                     currency: "BRL",
                   })}
                 </td>
-                <td>{request.requestStatus.description}</td>
+                <td>
+                  {isAdmin ? (
+                    <select
+                      onChange={(e) =>
+                        handleRequestStatus(request.id, e.target.value)
+                      }
+                      value={request.requestStatus.description}
+                      name="requestStatus"
+                      id="requestStatus"
+                    >
+                      <option value={request.requestStatus.id}>
+                        {request.requestStatus.description}
+                      </option>
+                      {requestStatus.map((status) => (
+                        <option key={status.id} value={status.id}>
+                          {status.description}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    request.requestStatus.description
+                  )}
+                </td>
                 <td>
                   <Link to={`/request/${request.id}`}>Ver mais</Link>
                 </td>

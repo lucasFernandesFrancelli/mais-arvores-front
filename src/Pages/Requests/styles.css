@@ -35,3 +35,17 @@
   background-color: #04aa6d;
   color: white;
 }
+
+.requests_table td select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  flex: 1;
+  background: none;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 15px;
+  font-size: 16px;
+  color: #6C6C80;
+  text-align: center;
+}
