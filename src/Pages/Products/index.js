@@ -4,10 +4,12 @@ import Footer from "../../Components/Footer";
 import "./styles.css";
 import { Header } from "../../Components/Header";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { isAdmin } = useAuth();
 
   useEffect(() => {
     (async () => {
@@ -25,9 +27,12 @@ export default function Products() {
     <div>
       <Header />
       <main className="products">
-        <h1>Produtos</h1>
+        <section className="products_header">
+          <h1>Produtos</h1>
+          {isAdmin && <Link to="/create-product">Criar produto</Link>}
+        </section>
 
-        <div className="products_list">
+        <section className="products_list">
           <ul>
             {products.map((product) => (
               <li key={product.id}>
@@ -48,7 +53,7 @@ export default function Products() {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       </main>
 
       <Footer />

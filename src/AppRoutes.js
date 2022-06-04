@@ -4,9 +4,8 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { useContext } from "react";
 
-import { AuthContext, AuthProvider } from "./contexts/auth";
+import { AuthProvider, useAuth } from "./contexts/auth";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -18,9 +17,10 @@ import { Cart } from "./Pages/Cart";
 import { Purchase } from "./Pages/Purchase";
 import { Requests } from "./Pages/Requests";
 import { Request } from "./Pages/Request";
+import { CreateProduct } from "./Pages/Products/CreateProduct";
 
 function PrivateRoute({ children }) {
-  const { authenticated, loading } = useContext(AuthContext);
+  const { authenticated, loading } = useAuth();
 
   if (loading) {
     return <div className="loading">Carregando</div>;
@@ -28,6 +28,24 @@ function PrivateRoute({ children }) {
 
   if (!authenticated) {
     return <Navigate to="/login" />;
+  }
+
+  return children;
+}
+
+function PrivateAdminRoute({ children }) {
+  const { isAdmin, authenticated, loading } = useAuth();
+
+  if (loading) {
+    return <div className="loading">Carregando</div>;
+  }
+
+  if (!authenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  if (!isAdmin) {
+    return <Navigate to="/" />;
   }
 
   return children;
@@ -96,6 +114,14 @@ export default function AppRoutes() {
                 <PrivateRoute>
                   <Request />
                 </PrivateRoute>
+              }
+            />
+            <Route
+              path="/create-product"
+              element={
+                <PrivateAdminRoute>
+                  <CreateProduct />
+                </PrivateAdminRoute>
               }
             />
           </Routes>

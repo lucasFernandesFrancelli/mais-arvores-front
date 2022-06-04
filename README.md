@@ -12,8 +12,9 @@
 - [x] Deslogar quando expirar o token
 
 - [ ] Poderá editar os dados do usuário
+- [ ] Criar tela para mudar status do pedido (usuário admin -> tela do usuário)
 - [x] Criar tela para visualizar os pedidos (usuário normal)
 - [x] Criar tela para visualizar informações do pedido
-- [ ] Criar tela para mudar status do pedido (usuário admin -> tela do usuário)
 - [ ] Tela de cadastro de produtos
-  - [ ] Adicionar validação de admin no contexto de autenticação
+  - [x] Adicionar validação de admin no contexto de autenticação
+  - [x] Adicionar botão de criar produto apenas para o admin na tela de produtos

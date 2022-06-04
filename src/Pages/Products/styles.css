@@ -9,8 +9,30 @@
   justify-content: center;
 }
 
-.products  h1 {
+.products_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.products_header h1 {
   text-align: center;
+}
+
+.products_header a {
+  border: none;
+  background: rgb(93, 161, 93);
+  color: #fff;
+  padding: 20px 25px;
+  border-radius: 15px;
+  text-decoration: none;
+
+}
+
+.products_header a:hover {
+  background: rgb(63, 105, 63);
+  text-decoration: none;
+  color: #fff;
 }
 
 .products_list {

@@ -13,14 +13,17 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const recoveredUserToken = localStorage.getItem("token");
+    const recoveredUserToken = localStorage.getItem("@mais-arvores/token");
+    const recoveredUserPermission = localStorage.getItem("@mais-arvores/admin");
 
     if (recoveredUserToken) {
       const decoded = jwtDecode(recoveredUserToken);
       if (decoded.exp > Date.now() / 1000) {
         setToken(recoveredUserToken);
+        setIsAdmin(recoveredUserPermission);
         setUserId(decoded.sub);
         api.defaults.headers.Authorization = `Bearer ${recoveredUserToken}`;
       }
@@ -32,14 +35,16 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     const response = await createSession(email, password);
 
-    const token = response.data;
+    const { token, isAdmin } = response.data;
 
-    localStorage.setItem("token", token);
+    localStorage.setItem("@mais-arvores/token", token);
+    localStorage.setItem("@mais-arvores/admin", isAdmin);
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     toast.success("Login bem sucedido");
     setToken(token);
+    setIsAdmin(isAdmin);
     navigate("/");
   };
 
@@ -68,6 +73,7 @@ export function AuthProvider({ children }) {
         register,
         logout,
         userId,
+        isAdmin,
       }}
     >
       {children}
