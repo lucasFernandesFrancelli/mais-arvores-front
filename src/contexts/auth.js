@@ -33,9 +33,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = await createSession(email, password)
-      .then(() => toast.success("Login bem sucedido"))
-      .catch(() => toast.error("Email ou senha incorretos"));
+    const response = await createSession(email, password);
 
     const { token, isAdmin } = response.data;
 
