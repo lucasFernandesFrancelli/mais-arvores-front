@@ -13,7 +13,7 @@
 
 - [ ] Poderá editar os dados do usuário
 - [x] Criar tela para visualizar os pedidos (usuário normal)
-- [ ] Criar tela para visualizar informações do pedido
+- [x] Criar tela para visualizar informações do pedido
 - [ ] Criar tela para mudar status do pedido (usuário admin -> tela do usuário)
 - [ ] Tela de cadastro de produtos
   - [ ] Adicionar validação de admin no contexto de autenticação
