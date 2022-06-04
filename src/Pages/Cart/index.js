@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Components/Footer";
 import { Header } from "../../Components/Header";
 import { useCart } from "../../contexts/cart";
@@ -6,8 +6,12 @@ import "./styles.css";
 
 export function Cart() {
   const { productList, total, removeProduct } = useCart();
+  const navigate = useNavigate();
 
-  console.log(productList);
+  function redirectToPurchase() {
+    navigate("/purchase");
+  }
+
   return (
     <div>
       <Header />
@@ -21,7 +25,10 @@ export function Cart() {
               currency: "BRL",
             })}
           </span>
-          <Link to="/purchase">Prosseguir com a compra</Link>
+
+          <button onClick={redirectToPurchase} disabled={Number(total) <= 0}>
+            Prosseguir com a compra
+          </button>
         </section>
         <section className="cart_list">
           <ul>

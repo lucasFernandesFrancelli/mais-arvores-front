@@ -9,7 +9,7 @@ export function Product() {
   const { id } = useParams();
   const { addProduct, isProductInList } = useCart();
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     api.get(`/products/${id}`).then((response) => {
@@ -41,11 +41,12 @@ export function Product() {
               setQuantity(e.target.value);
             }}
             value={quantity}
+            min="1"
           ></input>
           {!isProductInList(product?.id) ? (
             <button
               onClick={handleAddProductToCart}
-              disabled={!Number(quantity)}
+              disabled={Number(quantity) < 1}
               className="product_detail_button"
             >
               Adicionar ao carrinho

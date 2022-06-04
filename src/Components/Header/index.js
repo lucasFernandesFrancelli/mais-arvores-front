@@ -19,9 +19,15 @@ export function Header() {
             <Link to="/">Home</Link>
           </li>
           {token && (
-            <li>
-              <Link to="/products">Produtos</Link>
-            </li>
+            <>
+              <li>
+                <Link to="/products">Produtos</Link>
+              </li>
+
+              <li>
+                <Link to="/requests">Pedidos</Link>
+              </li>
+            </>
           )}
           <li>
             {token ? (
