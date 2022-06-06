@@ -1,8 +1,9 @@
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 
 import { AuthProvider, useAuth } from "./contexts/auth";

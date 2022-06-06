@@ -1,3 +1,4 @@
+import React from "react";
 import Footer from "../../Components/Footer";
 import bannerImg from "../../assets/home/banner.png";
 import plantaImg from "../../assets/home/planta.png";

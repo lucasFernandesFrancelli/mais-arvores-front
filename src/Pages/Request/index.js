@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Header } from "../../Components/Header";
@@ -11,7 +12,7 @@ export function Request() {
   const [request, setRequest] = useState({});
 
   useEffect(() => {
-    api.get(`/request/${id}`).then((response) => {
+    api.get(`/request/${id}`).then(response => {
       setRequest(response.data);
     });
   }, []);
@@ -25,38 +26,42 @@ export function Request() {
         <section className="request_info">
           <p>
             Data do pedido: &nbsp;
-            <strong>{dayjs(request?.date).format("DD/MM/YYYY HH:mm")}</strong>
+            <strong>
+              {request && dayjs(request.date).format("DD/MM/YYYY HH:mm")}
+            </strong>
           </p>
           <p>
             Status do pedido: &nbsp;
-            <strong>{request?.requestStatus?.description}</strong>
+            <strong>{request && request.requestStatus.description}</strong>
           </p>
           <p>
             Método de pagamento: &nbsp;
-            <strong>{request?.paymentMethod?.description}</strong>
+            <strong>{request && request.paymentMethod.description}</strong>
           </p>
         </section>
 
         <section className="request_products">
           <ul>
-            {request?.products?.map((product) => (
-              <li key={product.product.id}>
-                <Link to={`/product/${product.product.id}`}>
-                  <img
-                    className="card-img-top"
-                    src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"
-                    // src={
-                    //   "https://mais-arvores-api.herokuapp.com/products/download/" +
-                    //   product.image
-                    // }
-                  />
-                </Link>
+            {request &&
+              request.products.map(product => (
+                <li key={product.product.id}>
+                  <Link to={`/product/${product.product.id}`}>
+                    <img
+                      className="card-img-top"
+                      src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"
+                      // src={
+                      //   "https://mais-arvores-api.herokuapp.com/products/download/" +
+                      //   product.image
+                      // }
+                      alt={product.description}
+                    />
+                  </Link>
 
-                <p>{product.product.description}</p>
-                <span>Preço: R$ {product.currentPrice}</span>
-                <span>Quantidade: {product.productQuantity}</span>
-              </li>
-            ))}
+                  <p>{product.product.description}</p>
+                  <span>Preço: R$ {product.currentPrice}</span>
+                  <span>Quantidade: {product.productQuantity}</span>
+                </li>
+              ))}
           </ul>
         </section>
       </main>

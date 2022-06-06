@@ -33,8 +33,8 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = createSession(email, password)
-      .then((response) => {
+    createSession(email, password)
+      .then(response => {
         toast.success("Login efetuado com sucesso");
 
         const { token, isAdmin } = response.data;
@@ -51,15 +51,28 @@ export function AuthProvider({ children }) {
         setUserId(decoded.sub);
         navigate("/");
       })
-      .catch((err) => toast.error(err.toString()));
+      .catch(() => toast.error("E-mail ou senha incorretos"));
   };
 
   const register = async (username, email, password) => {
-    await createUser(username, email, password);
+    createUser(username, email, password)
+      .then(() => {
+        toast.success("Usuário registrado com sucesso");
 
-    toast.success("Usuário registrado com sucesso");
-
-    navigate("/login");
+        navigate("/login");
+      })
+      .catch(err => {
+        const errorMessage = String(
+          err.response.data.message
+        ).toLocaleLowerCase();
+        if (errorMessage.includes("username")) {
+          toast.error("Nome de usuário já cadastrado!");
+        } else if (errorMessage.includes("email")) {
+          toast.error("Email já cadastrado!");
+        } else {
+          toast.error("Erro no servidor");
+        }
+      });
   };
 
   const logout = () => {
@@ -80,7 +93,7 @@ export function AuthProvider({ children }) {
         register,
         logout,
         userId,
-        isAdmin,
+        isAdmin
       }}
     >
       {children}

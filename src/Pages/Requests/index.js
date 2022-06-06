@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/auth";
 import { api } from "../../services/api";
@@ -13,13 +14,13 @@ export function Requests() {
   const { isAdmin } = useAuth();
 
   useEffect(() => {
-    api.get(`/request/${isAdmin ? "" : "user"}`).then((response) => {
+    api.get(`/request/${isAdmin ? "" : "user"}`).then(response => {
       setRequests(response.data);
     });
   }, []);
 
   useEffect(() => {
-    api.get("request-status").then((response) => {
+    api.get("request-status").then(response => {
       setRequestStatus(response.data);
     });
   }, []);
@@ -28,11 +29,11 @@ export function Requests() {
     api
       .put(`/request/${requestId}`, {
         requestStatus: {
-          id: statusId,
-        },
+          id: statusId
+        }
       })
       .then(() => {
-        api.get(`/request/${isAdmin ? "" : "user"}`).then((response) => {
+        api.get(`/request/${isAdmin ? "" : "user"}`).then(response => {
           setRequests(response.data);
         });
       });
@@ -55,20 +56,20 @@ export function Requests() {
           </tr>
           {requests
             .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map((request) => (
+            .map(request => (
               <tr key={request.id}>
                 <td>{dayjs(request.date).format("DD/MM/YYYY HH:mm")}</td>
                 <td>{request.paymentMethod.description}</td>
                 <td>
                   {request.total.toLocaleString("pt-BR", {
                     style: "currency",
-                    currency: "BRL",
+                    currency: "BRL"
                   })}
                 </td>
                 <td>
                   {isAdmin ? (
                     <select
-                      onChange={(e) =>
+                      onChange={e =>
                         handleRequestStatus(request.id, e.target.value)
                       }
                       value={request.requestStatus.description}
@@ -78,7 +79,7 @@ export function Requests() {
                       <option value={request.requestStatus.id}>
                         {request.requestStatus.description}
                       </option>
-                      {requestStatus.map((status) => (
+                      {requestStatus.map(status => (
                         <option key={status.id} value={status.id}>
                           {status.description}
                         </option>

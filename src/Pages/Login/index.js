@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/auth";
 import wellcomeImg from "../../assets/login/wellcome.png";
@@ -11,7 +12,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     login(email, password);
@@ -37,7 +38,7 @@ export default function Login() {
                 name="email"
                 id="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
               />
             </label>
           </div>
@@ -49,7 +50,7 @@ export default function Login() {
                 name="password"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
               />
             </label>
           </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.css";
 import { Header } from "../../Components/Header";
 import { useEffect, useState } from "react";
@@ -13,7 +14,7 @@ export function Purchase() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get("/payment-method").then((response) => {
+    api.get("/payment-method").then(response => {
       setPaymentMethods(response.data);
       console.log(response);
     });
@@ -26,13 +27,13 @@ export function Purchase() {
       paymentMethod: { id: selectedPaymentMethod },
       deliveryRate: 0,
       total,
-      products: productList.map((product) => ({
+      products: productList.map(product => ({
         ...product,
         productQuantity: product.quantity,
         currentPrice: product.price,
         product: { id: product.id },
-        id: undefined,
-      })),
+        id: undefined
+      }))
     };
 
     console.log(body);
@@ -43,7 +44,7 @@ export function Purchase() {
         toast.success("Pedido realizado com sucesso");
         navigate("/");
       })
-      .catch((error) => {
+      .catch(error => {
         toast.error("Falha ao realizar compra");
         console.error(error);
       });
@@ -58,13 +59,13 @@ export function Purchase() {
           <div className="purchase_form_input_group">
             <label for="paymentMethod">Método de Pagamento</label>
             <select
-              onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+              onChange={e => setSelectedPaymentMethod(e.target.value)}
               value={selectedPaymentMethod}
               name="paymentMethod"
               id="paymentMethod"
             >
               <option value="0">Método de pagamento</option>
-              {paymentMethods.map((paymentMethod) => (
+              {paymentMethods.map(paymentMethod => (
                 <option key={paymentMethod.id} value={paymentMethod.id}>
                   {paymentMethod.description}
                 </option>
@@ -76,7 +77,7 @@ export function Purchase() {
               Total:
               {Number(total).toLocaleString("pt-BR", {
                 style: "currency",
-                currency: "BRL",
+                currency: "BRL"
               })}
             </h2>
             <button type="submit">Finalizar compra</button>

@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Components/Footer";
 import { Header } from "../../Components/Header";
@@ -22,7 +23,7 @@ export function Cart() {
             Total: &nbsp;
             {Number(total).toLocaleString("pt-BR", {
               style: "currency",
-              currency: "BRL",
+              currency: "BRL"
             })}
           </span>
 
@@ -32,7 +33,7 @@ export function Cart() {
         </section>
         <section className="cart_list">
           <ul>
-            {productList.map((product) => (
+            {productList.map(product => (
               <li key={product.id}>
                 <Link to={`/product/${product.id}`}>
                   <img
@@ -41,6 +42,7 @@ export function Cart() {
                     //   "https://mais-arvores-api.herokuapp.com/products/download/" +
                     //   product.image
                     // }
+                    alt={product.description}
                   />
                 </Link>
 
@@ -49,7 +51,7 @@ export function Cart() {
                   <span>
                     {Number(product.price).toLocaleString("pt-BR", {
                       style: "currency",
-                      currency: "BRL",
+                      currency: "BRL"
                     })}
                   </span>
                 </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useContext, useState } from "react";
 
 export const CartContext = createContext({});
@@ -20,7 +21,7 @@ export function CartContextProvider({ children }) {
       setProductList([]);
       setTotal(0);
     } else {
-      const newProductList = productList.filter((e) => e.id !== product.id);
+      const newProductList = productList.filter(e => e.id !== product.id);
       setProductList(newProductList);
       setTotal(total - Number(product.price) * Number(product.quantity));
     }
@@ -29,7 +30,7 @@ export function CartContextProvider({ children }) {
   function isProductInList(id) {
     let isProductInCart = false;
 
-    productList.forEach((product) => {
+    productList.forEach(product => {
       if (product.id === id) {
         isProductInCart = true;
       }
@@ -45,7 +46,7 @@ export function CartContextProvider({ children }) {
         removeProduct,
         addProduct,
         productList,
-        isProductInList,
+        isProductInList
       }}
     >
       {children}

@@ -1,11 +1,11 @@
+import React from "react";
 import { useState } from "react";
-import { FaIcons } from "react-icons/fa";
 import "./styles.css";
 
 export function CreateProduct() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  // const [image, _setImage] = useState("");
 
   // const imgFunction = (event) => {
   //   setImage(event.target.value);
@@ -17,7 +17,7 @@ export function CreateProduct() {
   //   reader.readAsDataURL(event.target.files[0]);
   // };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
   };
 
@@ -37,7 +37,7 @@ export function CreateProduct() {
                   name="description"
                   id="description"
                   value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  onChange={e => setDescription(e.target.value)}
                 />
               </div>
             </label>
@@ -51,12 +51,12 @@ export function CreateProduct() {
                   name="price"
                   id="price"
                   value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  onChange={e => setPrice(e.target.value)}
                 />
               </div>
             </label>
           </div>
-          {image != null && image != "" ? (
+          {/* {image != null && image != "" ? (
             <div className="id_img">
               <img
                 id="output"
@@ -65,11 +65,11 @@ export function CreateProduct() {
                   minWidth: "200px",
                   maxHeight: "200px",
                   maxWidth: "200px",
-                  border: "0px",
+                  border: "0px"
                 }}
               />
             </div>
-          ) : null}
+          ) : null} */}
           <div className="cadastro-labelp">
             <label>
               <div>
@@ -77,7 +77,7 @@ export function CreateProduct() {
                   type="file"
                   name="image"
                   id="image"
-                  value={image}
+                  // value={image}
                   // onChange={(e) => imgFunction(e)}
                   placeholder="image"
                   hidden

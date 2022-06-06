@@ -1,5 +1,6 @@
+import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../Components/Header";
 import { useAuth } from "../../contexts/auth";
 import { api } from "../../services/api";
@@ -14,7 +15,7 @@ export function User() {
     if (!userId) {
       navigate("/");
     }
-    api.get(`/users/${userId}`).then((response) => {
+    api.get(`/users/${userId}`).then(response => {
       setUser(response.data);
     });
   }, []);
@@ -25,8 +26,8 @@ export function User() {
       <main className="user">
         <h1>Meus Dados</h1>
         <section className="user_detail">
-          <p>Nome: {user?.username}</p>
-          <p>E-mail: {user?.email}</p>
+          <p>Nome: {user && user.username}</p>
+          <p>E-mail: {user && user.email}</p>
         </section>
         <button onClick={logout} className="user_logout">
           logout

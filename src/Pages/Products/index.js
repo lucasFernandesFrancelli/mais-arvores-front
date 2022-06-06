@@ -1,3 +1,4 @@
+import React from "react";
 import { getProducts } from "../../services/api";
 import { useEffect, useState } from "react";
 import Footer from "../../Components/Footer";
@@ -34,7 +35,7 @@ export default function Products() {
 
         <section className="products_list">
           <ul>
-            {products.map((product) => (
+            {products.map(product => (
               <li key={product.id}>
                 <Link to={`/product/${product.id}`}>
                   <img
@@ -44,6 +45,7 @@ export default function Products() {
                     //   "https://mais-arvores-api.herokuapp.com/products/download/" +
                     //   product.image
                     // }
+                    alt={product.description}
                   />
                 </Link>
 
