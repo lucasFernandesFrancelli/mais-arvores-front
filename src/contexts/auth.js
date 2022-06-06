@@ -33,18 +33,25 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const response = await createSession(email, password);
+    const response = createSession(email, password)
+      .then((response) => {
+        toast.success("Login efetuado com sucesso");
 
-    const { token, isAdmin } = response.data;
+        const { token, isAdmin } = response.data;
 
-    localStorage.setItem("@mais-arvores/token", token);
-    localStorage.setItem("@mais-arvores/admin", isAdmin);
+        const decoded = jwtDecode(token);
 
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+        localStorage.setItem("@mais-arvores/token", token);
+        localStorage.setItem("@mais-arvores/admin", isAdmin);
 
-    setToken(token);
-    setIsAdmin(isAdmin);
-    navigate("/");
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+
+        setToken(token);
+        setIsAdmin(isAdmin);
+        setUserId(decoded.sub);
+        navigate("/");
+      })
+      .catch((err) => toast.error(err.toString()));
   };
 
   const register = async (username, email, password) => {
