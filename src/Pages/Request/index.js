@@ -38,9 +38,7 @@ export function Request() {
         <section className="request_info">
           <p>
             Data do pedido: &nbsp;
-            <strong>
-              {request && dayjs(request.date).format("DD/MM/YYYY HH:mm")}
-            </strong>
+            <strong>{dayjs(request.date).format("DD/MM/YYYY HH:mm")}</strong>
           </p>
           <p>
             Status do pedido: &nbsp;
