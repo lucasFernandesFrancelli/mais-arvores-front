@@ -52,7 +52,6 @@ export function Requests() {
             <th>Total</th>
             <th>Status do pedido</th>
             <th>Detalhes</th>
-            {isAdmin ? <th>Usuário</th> : ""}
           </tr>
           {requests
             .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -92,7 +91,7 @@ export function Requests() {
                 <td>
                   <Link to={`/request/${request.id}`}>Ver mais</Link>
                 </td>
-                <td>{isAdmin ? request.user.username : ""}</td>
+                {/* <td>{isAdmin ? request.user.username : ""}</td> */}
               </tr>
             ))}
         </table>

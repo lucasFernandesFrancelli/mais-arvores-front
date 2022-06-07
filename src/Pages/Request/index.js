@@ -9,13 +9,25 @@ import "./styles.css";
 
 export function Request() {
   const { id } = useParams();
-  const [request, setRequest] = useState({});
+  const [request, setRequest] = useState();
 
   useEffect(() => {
     api.get(`/request/${id}`).then(response => {
       setRequest(response.data);
     });
   }, []);
+
+  if (!request) {
+    return (
+      <div>
+        <Header />
+
+        <section className="request_not-found">
+          <p>Pedido não encontrado</p>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -32,17 +44,21 @@ export function Request() {
           </p>
           <p>
             Status do pedido: &nbsp;
-            <strong>{request && request.requestStatus.description}</strong>
+            <strong>
+              {request.requestStatus && request.requestStatus.description}
+            </strong>
           </p>
           <p>
             Método de pagamento: &nbsp;
-            <strong>{request && request.paymentMethod.description}</strong>
+            <strong>
+              {request.paymentMethod && request.paymentMethod.description}
+            </strong>
           </p>
         </section>
 
         <section className="request_products">
           <ul>
-            {request &&
+            {request.products &&
               request.products.map(product => (
                 <li key={product.product.id}>
                   <Link to={`/product/${product.product.id}`}>
