@@ -1,25 +1,52 @@
-import "./../../index.css";
-import logoCor from "./../../Components/logocor.png";
+import React from "react";
+import { FaCartPlus, FaUser } from "react-icons/fa";
 
-const Header = () => {
+import "./index.css";
+import { useAuth } from "../../contexts/auth";
+import { Link } from "react-router-dom";
+
+export function Header() {
+  const { token } = useAuth();
+
   return (
-    <div className="header-config">
-      <div className="logo">
-        <a href="/">
-          <img src={logoCor}></img>
-        </a>
+    <header className="header">
+      <div className="header_logo">
+        <Link to="/"></Link>
       </div>
-      <nav>
-        <ul className="header-links">
+      <nav className="header_nav">
+        <ul className="header_nav_ul">
           <li>
-            <a href="/">home</a>
-            <a href="/produtos">produtos</a>
-            <a href="/login">login</a>
+            <Link to="/">Home</Link>
+          </li>
+          {token && (
+            <>
+              <li>
+                <Link to="/products">Produtos</Link>
+              </li>
+
+              <li>
+                <Link to="/requests">Pedidos</Link>
+              </li>
+            </>
+          )}
+          <li>
+            {token ? (
+              <Link to="/user">
+                <FaUser />
+              </Link>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
+          </li>
+          <li>
+            {token && (
+              <Link to="/cart">
+                <FaCartPlus />
+              </Link>
+            )}
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
-};
-
-export default Header;
+}
