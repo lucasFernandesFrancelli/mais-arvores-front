@@ -22,7 +22,7 @@ export function Request() {
       <div>
         <Header />
 
-        <section className="request_not-found">
+        <section className="request_not_found">
           <p>Pedido não encontrado</p>
         </section>
       </div>
