@@ -6,17 +6,27 @@ import { api } from "../../services/api";
 import { useCart } from "../../contexts/cart";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth";
 
 export function Purchase() {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const { productList, total } = useCart();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [userDetail, setUserDetail] = useState(null);
+  const { userId } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!userId) {
+      navigate("/");
+    }
     api.get("/payment-method").then(response => {
       setPaymentMethods(response.data);
       console.log(response);
+    });
+    api.get(`/users-detail/${userId}`).then(response => {
+      setUserDetail(response.data);
     });
   }, []);
 
@@ -71,6 +81,12 @@ export function Purchase() {
                 </option>
               ))}
             </select>
+            <h4>Endereço de entrega</h4>
+            <p>Rua: {userDetail && userDetail.street}</p>
+            <p>Bairro: {userDetail && userDetail.neighborhood}</p>
+            <p>CEP: {userDetail && userDetail.zipCode}</p>
+            <p>Cidade: {userDetail && userDetail.city}</p>
+            <p>Estado: {userDetail && userDetail.state}</p>
           </div>
           <div className="purchase_form_action">
             <h2>
