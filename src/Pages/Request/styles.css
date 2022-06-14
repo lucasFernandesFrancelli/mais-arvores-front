@@ -1,8 +1,9 @@
 .request {
+  margin-top: 50px;
   padding: 20px;
 }
 
-.request_not-found {
+.request_not_found {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -79,4 +80,3 @@
     gap: 40px;
   }
 }
-

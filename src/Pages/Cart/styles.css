@@ -1,9 +1,9 @@
 .cart {
   padding: 20px;
+  margin-top: 50px;
 }
 
-
-.cart  h1 {
+.cart h1 {
   text-align: center;
 }
 
@@ -43,7 +43,7 @@
   justify-content: space-between;
 }
 
-.cart_list_detail span{
+.cart_list_detail span {
   font-weight: 300;
   color: rgb(128, 113, 113);
   align-self: center;
@@ -56,7 +56,6 @@
   text-align: left;
   color: rgb(128, 113, 113);
 }
-
 
 .cart_list ul li button {
   text-decoration: underline;
@@ -125,5 +124,11 @@
     padding: 40px;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cart_info {
+    flex-direction: column;
   }
 }

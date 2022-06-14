@@ -12,7 +12,7 @@ export function Request() {
   const [request, setRequest] = useState();
 
   useEffect(() => {
-    api.get(`/request/${id}`).then(response => {
+    api.get(`/request/${id}`).then((response) => {
       setRequest(response.data);
     });
   }, []);
@@ -22,7 +22,7 @@ export function Request() {
       <div>
         <Header />
 
-        <section className="request_not-found">
+        <section className="request_not_found">
           <p>Pedido não encontrado</p>
         </section>
       </div>
@@ -57,16 +57,16 @@ export function Request() {
         <section className="request_products">
           <ul>
             {request.products &&
-              request.products.map(product => (
+              request.products.map((product) => (
                 <li key={product.product.id}>
                   <Link to={`/product/${product.product.id}`}>
                     <img
                       className="card-img-top"
-                      src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"
-                      // src={
-                      //   "https://mais-arvores-api.herokuapp.com/products/download/" +
-                      //   product.image
-                      // }
+                      // src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"
+                      src={
+                        "https://mais-arvores-api.herokuapp.com/products/download/" +
+                        product.image
+                      }
                       alt={product.description}
                     />
                   </Link>

@@ -19,6 +19,7 @@ import { Purchase } from "./Pages/Purchase";
 import { Requests } from "./Pages/Requests";
 import { Request } from "./Pages/Request";
 import { CreateProduct } from "./Pages/Products/CreateProduct";
+import { UserDetail } from "./Pages/UserDetail";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useAuth();
@@ -82,6 +83,14 @@ export default function AppRoutes() {
               element={
                 <PrivateRoute>
                   <User />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/user-detail"
+              element={
+                <PrivateRoute>
+                  <UserDetail />
                 </PrivateRoute>
               }
             />
