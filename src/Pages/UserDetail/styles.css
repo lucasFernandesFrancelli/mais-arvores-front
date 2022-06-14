@@ -1,22 +1,22 @@
-.teste {
+.user_detail {
   display: flex;
-  width: 85vw;
-  height: 65vh;
-  margin-left: 100px;
-  margin-top: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
+}
+
+.user_detail_form {
+  padding: 40px;
+  align-self: center;
+  width: 85vw;
+  min-height: 65vh;
   background-color: #fafad2;
   border-radius: 5px;
-  animation-name: fade;
-  animation-duration: 2s;
-  overflow: hidden;
-  box-shadow: 0 0 1em black;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+  padding-bottom: 10px;
 }
+
 .col-md-6 label {
   display: flex;
   flex-direction: column;
@@ -25,106 +25,21 @@
   color: green;
   font-weight: bold;
   font-size: 1.3em;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
 }
 
-.col-md-6 input {
-  border-radius: 5px;
-  border: 1px solid white;
-  padding-left: 5px;
-  height: 5vh;
-  width: 52vh;
-  margin-top: 5px;
-  animation-name: move;
-  animation-duration: 2s;
-}
-
-.col-md-6 input:hover {
-  border: 1px solid green;
-}
-
-.col-md-6 span {
-  color: #ff6347;
-  font-size: 0.7em;
-  margin-top: 5.5%;
-  position: absolute;
-}
-
-.col-md-6 button {
-  height: 5vh;
-  width: 25vh;
-  background-color: green;
-  border-radius: 5px;
-  color: white;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  animation-name: move;
-  animation-duration: 2s;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-
-.title {
-  text-align: center;
-  padding-top: 1%;
-  background-color: #579200;
-  width: 100%;
-
-  height: 8vh;
-  color: white;
-  font-size: 150%;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-
-.row button {
+.user_detail_form button {
   border: none;
   background: rgb(93, 161, 93);
   color: #fff;
-  width: 100px;
+  width: 100%;
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
-  margin-left: 70%;
-  margin-top: -5%;
-  z-index: 1;
+  padding: 8px;
+  margin-top: 27px;
 }
 
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.user_detail_form button:hover {
+  background: rgb(54, 105, 54);
 }
 
-@keyframes move {
-  from {
-    opacity: 0;
-    transform: translateY(50%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-.bloco {
-  position: relative;
-  right: 30%;
-  margin-top: 10%;
-  margin-left: 20%;
-}
-.bloco2 {
-  position: fixed;
-  left: 60%;
-}

@@ -18,7 +18,7 @@ const schema = yup.object({
       "A senha precisa ter no mínimo 8 caracteres, " +
         "uma letra maiúscula e uma letra minúscula, " +
         "um número"
-    )
+    ),
 });
 
 export default function Register() {
@@ -28,7 +28,7 @@ export default function Register() {
 
   const { register } = useAuth();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     register(username, email, password);
@@ -50,7 +50,7 @@ export default function Register() {
                   name="username"
                   id="username"
                   value={username}
-                  onChange={e => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value)}
                   placeholder="nome_de_usuario"
                 />
                 {/* <span>{errors.username?.message}</span> */}
@@ -65,7 +65,7 @@ export default function Register() {
                   name="email"
                   id="email"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="email@exemplo.com"
                 />
                 {/* <span>{errors.email?.message}</span> */}
@@ -80,7 +80,7 @@ export default function Register() {
                   name="password"
                   id="password"
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="mín. 8 caracteres"
                 />
                 {/* {errors.password && (

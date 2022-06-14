@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-evenly;
   margin: 5rem;
+  min-height: 100vh;
 }
 
 .product_not_found {
@@ -87,8 +88,7 @@
   .product_detail {
     min-width: auto;
   }
-  .product_detail img {
-    width: 100%;
-    height: auto;
+  .product img {
+    width: 90%;
   }
 }

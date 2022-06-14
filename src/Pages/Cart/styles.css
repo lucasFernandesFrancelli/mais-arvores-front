@@ -1,5 +1,6 @@
 .cart {
   padding: 20px;
+  margin-top: 50px;
 }
 
 .cart h1 {
@@ -123,5 +124,11 @@
     padding: 40px;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cart_info {
+    flex-direction: column;
   }
 }

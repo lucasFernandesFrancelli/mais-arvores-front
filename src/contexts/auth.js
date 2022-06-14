@@ -14,6 +14,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [hasDetail, setHasDetail] = useState(false);
 
   useEffect(() => {
     const recoveredUserToken = localStorage.getItem("@mais-arvores/token");
@@ -34,22 +35,24 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     createSession(email, password)
-      .then(response => {
+      .then((response) => {
         toast.success("Login efetuado com sucesso");
 
-        const { token, isAdmin } = response.data;
+        const { token, isAdmin, hasDetail } = response.data;
 
         const decoded = jwtDecode(token);
 
         localStorage.setItem("@mais-arvores/token", token);
         localStorage.setItem("@mais-arvores/admin", isAdmin);
+        localStorage.setItem("@mais-arvores/detail", hasDetail);
 
         api.defaults.headers.Authorization = `Bearer ${token}`;
 
         setToken(token);
         setIsAdmin(isAdmin);
+        setHasDetail(hasDetail);
         setUserId(decoded.sub);
-        navigate("/");
+        navigate(hasDetail ? "/" : "/user-detail");
       })
       .catch(() => toast.error("E-mail ou senha incorretos"));
   };
@@ -61,7 +64,7 @@ export function AuthProvider({ children }) {
 
         navigate("/login");
       })
-      .catch(err => {
+      .catch((err) => {
         const errorMessage = String(
           err.response.data.message
         ).toLocaleLowerCase();
@@ -93,7 +96,9 @@ export function AuthProvider({ children }) {
         register,
         logout,
         userId,
-        isAdmin
+        isAdmin,
+        hasDetail,
+        setHasDetail,
       }}
     >
       {children}

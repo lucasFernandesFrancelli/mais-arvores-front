@@ -30,7 +30,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div>
+          <div className="home_about_img">
             <img src={plantaImg} alt="Cuidamos das arvores" />
           </div>
         </section>

@@ -13,7 +13,7 @@ export function Product() {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    api.get(`/products/${id}`).then(response => {
+    api.get(`/products/${id}`).then((response) => {
       const { data } = response;
       setProduct(data);
     });
@@ -40,11 +40,11 @@ export function Product() {
       <Header />
       <main className="product">
         <img
-          src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"
-          // src={
-          //   "https://mais-arvores-api.herokuapp.com/products/download/" +
-          //   product.image
-          // }
+          // src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"
+          src={
+            "https://mais-arvores-api.herokuapp.com/products/download/" +
+            product.image
+          }
           alt=""
         />
         <div className="product_detail">
@@ -53,12 +53,12 @@ export function Product() {
             {product &&
               Number(product.price).toLocaleString("pt-BR", {
                 style: "currency",
-                currency: "BRL"
+                currency: "BRL",
               })}
           </span>
           <input
             type="number"
-            onChange={e => {
+            onChange={(e) => {
               setQuantity(e.target.value);
             }}
             value={quantity}
