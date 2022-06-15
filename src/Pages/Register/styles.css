@@ -1,6 +1,6 @@
 .register {
   background-color: #d8ff9e;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
 
   display: flex;
   align-items: center;
