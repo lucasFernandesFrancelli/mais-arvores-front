@@ -30,7 +30,9 @@ export default function Products() {
       <main className="products">
         <section className="products_header">
           <h1>Produtos</h1>
-          {isAdmin === true && <Link to="/create-product">Criar produto</Link>}
+          {isAdmin === true && (
+            <Link to="/create-product">Adicionar produto</Link>
+          )}
         </section>
 
         <section className="products_list">

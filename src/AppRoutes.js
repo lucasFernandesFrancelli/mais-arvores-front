@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 
 import { AuthProvider, useAuth } from "./contexts/auth";
@@ -20,6 +20,7 @@ import { Requests } from "./Pages/Requests";
 import { Request } from "./Pages/Request";
 import { CreateProduct } from "./Pages/Products/CreateProduct";
 import { UserDetail } from "./Pages/UserDetail";
+import { UpdateProduct } from "./Pages/Product/update";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useAuth();
@@ -68,6 +69,14 @@ export default function AppRoutes() {
                 <PrivateRoute>
                   <Products />
                 </PrivateRoute>
+              }
+            />
+            <Route
+              path="/products/update/:id"
+              element={
+                <PrivateAdminRoute>
+                  <UpdateProduct />
+                </PrivateAdminRoute>
               }
             />
             <Route
@@ -126,6 +135,7 @@ export default function AppRoutes() {
                 </PrivateRoute>
               }
             />
+
             <Route
               path="/create-product"
               element={

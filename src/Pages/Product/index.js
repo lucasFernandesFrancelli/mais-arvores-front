@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Header } from "../../Components/Header";
+import { useAuth } from "../../contexts/auth";
 import { useCart } from "../../contexts/cart";
 import { api } from "../../services/api";
 import "./styles.css";
@@ -11,6 +13,9 @@ export function Product() {
   const { addProduct, isProductInList } = useCart();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const { isAdmin } = useAuth();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     api.get(`/products/${id}`).then((response) => {
@@ -33,6 +38,26 @@ export function Product() {
 
   function handleAddProductToCart() {
     addProduct({ ...product, quantity: Number(quantity) });
+  }
+
+  function handleDeleteProduct() {
+    const confirm = window.confirm(
+      "Tem certeza que deseja deletar este produto?"
+    );
+
+    if (!confirm) {
+      return;
+    }
+
+    api
+      .delete(`/products/${id}`)
+      .then(() => {
+        toast.success("Produto deletado com sucesso");
+        navigate("/products");
+      })
+      .catch(() => {
+        toast.error("Não foi possível deletar o produto");
+      });
   }
 
   return (
@@ -63,7 +88,25 @@ export function Product() {
             value={quantity}
             min="1"
           ></input>
-          {product && !isProductInList(product.id) ? (
+
+          {isAdmin == true && (
+            <Link
+              className="product_detail_button"
+              style={{ marginTop: 15, background: "blue" }}
+              to={`/products/update/${product.id}`}
+            >
+              Editar produto
+            </Link>
+          )}
+          {isAdmin == true ? (
+            <button
+              onClick={handleDeleteProduct}
+              className="product_detail_button"
+              style={{ marginTop: 15, background: "red" }}
+            >
+              Deletar produto
+            </button>
+          ) : product && !isProductInList(product.id) ? (
             <button
               onClick={handleAddProductToCart}
               disabled={Number(quantity) < 1}

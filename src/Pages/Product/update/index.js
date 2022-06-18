@@ -5,10 +5,11 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../../contexts/auth";
 import { api } from "../../../services/api";
 import { Header } from "../../../Components/Header";
-import Footer from "./../../../Components/Footer";
+import Footer from "../../../Components/Footer";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
-export function CreateProduct() {
+export function UpdateProduct() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [categories, setCategories] = useState([]);
@@ -16,16 +17,29 @@ export function CreateProduct() {
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInput = React.createRef();
   const { isAdmin } = useAuth();
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAdmin == false) {
-      navigate("/");
-    }
     api.get("/categories").then((response) => {
       setCategories(response.data);
     });
+  }, []);
+
+  useEffect(() => {
+    console.log(id);
+    api
+      .get(`/products/${id}`)
+      .then((response) => {
+        setPrice(response.data.price);
+        setDescription(response.data.description);
+        setSelectedCategory(response.data.category.description);
+      })
+      .catch(() => {
+        toast.error("Produto não encontrado");
+        navigate("/products");
+      });
   }, []);
 
   function handleSubmit(e) {
@@ -36,13 +50,13 @@ export function CreateProduct() {
     }
 
     api
-      .post("/products", {
+      .put(`/products/${id}`, {
         description,
         price,
         category: { id: selectedCategory },
       })
       .then((response) => {
-        toast.success("Produto cadastrado com sucesso");
+        toast.success("Produto atualizado com sucesso");
 
         const formData = new FormData();
         formData.append("product", fileInput.current.files[0]);
@@ -113,7 +127,6 @@ export function CreateProduct() {
               ))}
             </select>
           </div>
-
           <div className="cadastro-label">
             <input
               type="file"
@@ -122,8 +135,9 @@ export function CreateProduct() {
               ref={fileInput}
             />
           </div>
+
           <div className="button-criar">
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Atualizar</button>
           </div>
         </form>
       </div>
