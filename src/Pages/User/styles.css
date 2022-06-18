@@ -28,3 +28,21 @@
 .user_detail p {
   text-align: center;
 }
+
+.user_edit{
+  background: blue;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  width: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.user_edit:hover {
+  background: rgb(15, 15, 179);
+  text-decoration: none;
+  color: #fff;
+}

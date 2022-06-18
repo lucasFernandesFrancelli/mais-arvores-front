@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../Components/Header";
 import { useAuth } from "../../contexts/auth";
 import { api } from "../../services/api";
@@ -16,10 +16,10 @@ export function User() {
     if (!userId) {
       navigate("/");
     }
-    api.get(`/users/${userId}`).then(response => {
+    api.get(`/users/${userId}`).then((response) => {
       setUser(response.data);
     });
-    api.get(`/users-detail/${userId}`).then(response => {
+    api.get(`/users-detail/${userId}`).then((response) => {
       setUserDetail(response.data);
     });
   }, []);
@@ -36,6 +36,9 @@ export function User() {
         <button onClick={logout} className="user_logout">
           logout
         </button>
+        <Link className="user_edit" to={`/users/update/${userId}`}>
+          Editar dados
+        </Link>
       </main>
     </div>
   );

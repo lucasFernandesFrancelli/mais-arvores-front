@@ -1,0 +1,45 @@
+.user_detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.user_detail_form {
+  padding: 40px;
+  align-self: center;
+  width: 85vw;
+  min-height: 65vh;
+  background-color: #fafad2;
+  border-radius: 5px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+  padding-bottom: 10px;
+}
+
+.col-md-6 label {
+  display: flex;
+  flex-direction: column;
+  animation-name: move;
+  animation-duration: 2s;
+  color: green;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.user_detail_form button {
+  border: none;
+  background: rgb(93, 161, 93);
+  color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-top: 27px;
+}
+
+.user_detail_form button:hover {
+  background: rgb(54, 105, 54);
+}
+

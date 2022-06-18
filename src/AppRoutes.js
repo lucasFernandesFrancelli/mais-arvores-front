@@ -20,7 +20,8 @@ import { Requests } from "./Pages/Requests";
 import { Request } from "./Pages/Request";
 import { CreateProduct } from "./Pages/Products/CreateProduct";
 import { UserDetail } from "./Pages/UserDetail";
-import { UpdateProduct } from "./Pages/Product/update";
+import { UpdateUserDetail } from "./Pages/User/update";
+import { UpdateProduct } from "./Pages/Product/Update";
 
 function PrivateRoute({ children }) {
   const { authenticated, loading } = useAuth();
@@ -100,6 +101,14 @@ export default function AppRoutes() {
               element={
                 <PrivateRoute>
                   <UserDetail />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/users/update/:id"
+              element={
+                <PrivateRoute>
+                  <UpdateUserDetail />
                 </PrivateRoute>
               }
             />
