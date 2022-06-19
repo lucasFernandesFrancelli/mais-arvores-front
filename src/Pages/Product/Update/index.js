@@ -45,10 +45,6 @@ export function UpdateProduct() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!fileInput.current.files[0]) {
-      toast.error("Favor informar uma imagem");
-    }
-
     api
       .put(`/products/${id}`, {
         description,
@@ -61,7 +57,7 @@ export function UpdateProduct() {
         const formData = new FormData();
         formData.append("product", fileInput.current.files[0]);
 
-        api.post(`/products/${response.data.id}/images/upload`, formData);
+        api.post(`/products/${id}/images/upload`, formData);
 
         navigate("/");
       })
@@ -127,7 +123,7 @@ export function UpdateProduct() {
               ))}
             </select>
           </div>
-          <div className="cadastro-label">
+          <div className="cadastro-label-image">
             <input
               type="file"
               // value={selectedFile}

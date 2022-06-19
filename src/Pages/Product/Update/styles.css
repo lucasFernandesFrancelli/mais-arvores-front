@@ -68,6 +68,21 @@ input:hover {
   color: #6c6c80;
 }
 
+.cadastro-label-image :hover{
+  border: none;
+}
+
+.cadastro-label-image {
+  display: flex;
+  flex-direction: column;
+  color: #579200;
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 33%;
+  margin-top: 2%;
+  width: 60vw;
+}
+
 .button-criar button {
   height: 30px;
   width: 50%;

@@ -29,10 +29,18 @@ export function User() {
       <Header />
       <main className="user">
         <h1>Meus Dados</h1>
-        <section className="user_detail">
+        <div className="user_detail">
           <p>Nome de usuário: {user && user.username}</p>
           <p>E-mail: {user && user.email}</p>
-        </section>
+          <p>Nome: {userDetail && userDetail.firstName}</p>
+          <p>Sobrenome: {userDetail && userDetail.lastName}</p>
+          <h4>Endereço</h4>
+          <p>Rua: {userDetail && userDetail.street}</p>
+          <p>Bairro: {userDetail && userDetail.neighborhood}</p>
+          <p>CEP: {userDetail && userDetail.zipCode}</p>
+          <p>Cidade: {userDetail && userDetail.city}</p>
+          <p>Estado: {userDetail && userDetail.state}</p>
+        </div>
         <button onClick={logout} className="user_logout">
           logout
         </button>

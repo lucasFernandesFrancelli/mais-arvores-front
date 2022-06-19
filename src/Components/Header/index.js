@@ -51,6 +51,11 @@ export function Header() {
                         Pedidos
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link active text-white" to="/cart">
+                        Carrinho
+                      </Link>
+                    </li>
                   </>
                 )}
               </ul>

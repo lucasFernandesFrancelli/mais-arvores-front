@@ -114,7 +114,7 @@ export function CreateProduct() {
             </select>
           </div>
 
-          <div className="cadastro-label">
+          <div className="cadastro-label-file">
             <input
               type="file"
               // value={selectedFile}

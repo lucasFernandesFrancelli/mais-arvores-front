@@ -14,6 +14,8 @@
   margin: 5rem;
 }
 
+
+
 .cart_list ul {
   list-style-type: none;
   display: flex;
@@ -32,7 +34,7 @@
 }
 
 .cart_list ul li a img {
-  width: 200px;
+  width: 250px;
   height: 200px;
   object-fit: cover;
 }
@@ -42,6 +44,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 
 .cart_list_detail span {
   font-weight: 300;

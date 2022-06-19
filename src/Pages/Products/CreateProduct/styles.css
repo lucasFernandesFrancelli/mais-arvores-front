@@ -35,6 +35,7 @@
   margin-left: 0px;
 }
 
+
 input:hover {
   border: 1px solid #579200;
 }
@@ -49,6 +50,22 @@ input:hover {
   margin-top: 2%;
   width: 60vw;
 }
+
+.cadastro-label-file {
+  display: flex;
+  flex-direction: column;
+  color: #579200;
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 33%;
+  margin-top: 2%;
+  width: 60vw;
+}
+
+.cadastro-label-file :hover {
+  border: none;
+}
+
 .cadastro-label select {
   -webkit-appearance: none;
   -moz-appearance: none;
