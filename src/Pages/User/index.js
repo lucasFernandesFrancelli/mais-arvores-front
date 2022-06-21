@@ -28,9 +28,9 @@ export function User() {
     <div>
       <Header />
       <main className="user">
-        <h1>Meus Dados</h1>
         <div className="user_detail">
           <p>
+            <h1>Meus Dados</h1>
             <strong>Nome de usuário:</strong> {user && user.username}
             <br />
             <strong>E-mail:</strong> {user && user.email}
