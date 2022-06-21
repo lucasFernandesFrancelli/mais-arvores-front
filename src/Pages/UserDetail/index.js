@@ -17,7 +17,7 @@ export function UserDetail() {
   const [complement, setComplement] = useState(null);
   const [zipCode, setZipCode] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState(null);
   const [number, setNumber] = useState();
   const navigate = useNavigate();
 
@@ -120,12 +120,42 @@ export function UserDetail() {
             <div className="col-md-6">
               <label>
                 Estado
-                <input
+                <select
                   className="form-control"
-                  type="text"
-                  placeholder="Estado"
+                  id="UF"
+                  name="UF"
                   onChange={(e) => setState(e.target.value)}
-                />
+                  value={state}
+                >
+                  <option value="">Selecione</option>
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AP">AP</option>
+                  <option value="AM">AM</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="MG">MG</option>
+                  <option value="PA">PA</option>
+                  <option value="PB">PB</option>
+                  <option value="PR">PR</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SP">SP</option>
+                  <option value="SE">SE</option>
+                  <option value="TO">TO</option>
+                </select>
               </label>
               <label>
                 Cidade

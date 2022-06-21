@@ -7,7 +7,7 @@ import { api } from "../../services/api";
 import "./styles.css";
 
 export function User() {
-  const { logout, userId } = useAuth();
+  const { logout, userId, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [userDetail, setUserDetail] = useState(null);
