@@ -1,14 +1,19 @@
 
 
-
 .user {
-  padding: 100px;
+  margin-top: 120px;
+  padding-top: 110px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - 120px);
   gap: 30px;
+  width: 100%;
+  background-image: url('fundo.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+
 
 }
 
@@ -26,9 +31,24 @@
   background: rgb(185, 74, 74);
 }
 
-.user_detail p {
+.user_detail {
+  font-size: 20px;
+  margin-top: -20px;
+  text-align: left;
+
+}
+
+.user h1{
+  color: #579200;
+  font-style: oblique ;
+  font-size: 49px;
+  font-weight: bold;
+}
+.user h4{
   text-align: center;
 }
+
+
 
 .user_edit{
   background: blue;

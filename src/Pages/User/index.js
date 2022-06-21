@@ -30,16 +30,29 @@ export function User() {
       <main className="user">
         <h1>Meus Dados</h1>
         <div className="user_detail">
-          <p>Nome de usuário: {user && user.username}</p>
-          <p>E-mail: {user && user.email}</p>
-          <p>Nome: {userDetail && userDetail.firstName}</p>
-          <p>Sobrenome: {userDetail && userDetail.lastName}</p>
-          <h4>Endereço</h4>
-          <p>Rua: {userDetail && userDetail.street}</p>
-          <p>Bairro: {userDetail && userDetail.neighborhood}</p>
-          <p>CEP: {userDetail && userDetail.zipCode}</p>
-          <p>Cidade: {userDetail && userDetail.city}</p>
-          <p>Estado: {userDetail && userDetail.state}</p>
+          <p>
+            <strong>Nome de usuário:</strong> {user && user.username}
+            <br />
+            <strong>E-mail:</strong> {user && user.email}
+            <br />
+            <strong>Nome:</strong> {userDetail && userDetail.firstName}
+            <br />
+            <strong>Sobrenome:</strong> {userDetail && userDetail.lastName}
+            <br />
+            <br />
+            <h1>Endereço</h1>
+            <strong>Rua:</strong> {userDetail && userDetail.street}
+            <br />
+            <strong>Bairro:</strong> {userDetail && userDetail.neighborhood}
+            <br />
+            <strong>CEP:</strong> {userDetail && userDetail.zipCode}
+            <br />
+            <strong>Cidade:</strong> {userDetail && userDetail.city}
+            <br />
+            <strong>Estado:</strong> {userDetail && userDetail.state}
+            <br />
+          </p>
+          <p></p>
         </div>
         <button onClick={logout} className="user_logout">
           logout

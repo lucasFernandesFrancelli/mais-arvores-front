@@ -92,6 +92,27 @@
   color: darkgreen;
 }
 
+
+@media (min-width: 500px) {
+  .login_form > img {
+    width: 50vw;
+    height: 6vh;
+    animation-name: move;
+    animation-duration: 2s;
+    border-radius: 0.7rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .login_form > img {
+    width: 15vw;
+    height: 6vh;
+    animation-name: move;
+    animation-duration: 2s;
+    border-radius: 0.7rem;
+  }
+}
+
 @keyframes fade {
   from {
     opacity: 0;

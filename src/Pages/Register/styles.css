@@ -91,6 +91,38 @@
 
 }
 
+@media (min-width: 500px) {
+  .register_form {
+    height: 65vh;
+    width: 60vw;
+    margin: auto;
+    margin-top: 30%;
+  }
+
+  .register_form_button {
+    height: 50px;
+    width: 60%;
+    margin-bottom: 5px;
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    animation-name: move;
+    animation-duration: 2s;
+  }
+}
+
+@media (min-width: 1280px) {
+  .register_form {
+    height: 65vh;
+    width: 25vw;
+    margin: auto;
+    margin-top: 5%;
+  }
+}
+
 @keyframes fade {
   from {
     opacity: 0;
