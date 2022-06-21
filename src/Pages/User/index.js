@@ -43,6 +43,8 @@ export function User() {
             <h1>Endereço</h1>
             <strong>Rua:</strong> {userDetail && userDetail.street}
             <br />
+            <strong>Número:</strong> {userDetail && userDetail.number}
+            <br />
             <strong>Bairro:</strong> {userDetail && userDetail.neighborhood}
             <br />
             <strong>CEP:</strong> {userDetail && userDetail.zipCode}

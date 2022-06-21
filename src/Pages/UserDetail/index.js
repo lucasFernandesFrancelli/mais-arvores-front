@@ -6,6 +6,7 @@ import { api } from "../../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts/auth";
+import { IMaskInput } from "react-imask";
 
 export function UserDetail() {
   const [firstName, setFirstName] = useState("");
@@ -53,6 +54,27 @@ export function UserDetail() {
       });
   }
 
+  function checkCEP(e) {
+    const cep = e.target.value.replace(/[^0-9]/g, "");
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        const response = data;
+        if (response && response.hasOwnProperty("erro")) {
+          console.log("error");
+          toast.error("Informe um CEP válido");
+        }
+        setStreet(data.logradouro);
+        setCity(data.localidade);
+        setState(data.uf);
+        setNeighborhood(data.bairro);
+      })
+      .catch(() => {
+        toast.error("Falha ao buscar o CEP informado");
+      });
+  }
+
   return (
     <div>
       <Header />
@@ -62,7 +84,7 @@ export function UserDetail() {
           <div className="row">
             <div className="col-md-6">
               <label>
-                Nome do usuário
+                Nome do usuário:
                 <input
                   className="form-control"
                   type="text"
@@ -90,7 +112,8 @@ export function UserDetail() {
               </label>
               <label>
                 CPF
-                <input
+                <IMaskInput
+                  mask="000.000.000-00"
                   className="form-control"
                   type="text"
                   placeholder="CPF"
@@ -99,10 +122,12 @@ export function UserDetail() {
               </label>
               <label>
                 CEP
-                <input
+                <IMaskInput
+                  mask="00.000-000"
                   className="form-control"
                   type="text"
                   placeholder="CEP"
+                  onBlur={checkCEP}
                   onChange={(e) => setZipCode(e.target.value)}
                 />
               </label>
@@ -164,15 +189,17 @@ export function UserDetail() {
                   type="text"
                   placeholder="Cidade"
                   onChange={(e) => setCity(e.target.value)}
+                  value={city}
                 />
               </label>
               <label>
-                Rua
+                Rua:
                 <input
                   className="form-control"
                   type="text"
                   placeholder="Rua"
                   onChange={(e) => setStreet(e.target.value)}
+                  value={street}
                 />
               </label>
               <label>
@@ -182,6 +209,7 @@ export function UserDetail() {
                   type="text"
                   placeholder="Bairro"
                   onChange={(e) => setNeighborhood(e.target.value)}
+                  value={neighborhood}
                 />
               </label>
               <label>

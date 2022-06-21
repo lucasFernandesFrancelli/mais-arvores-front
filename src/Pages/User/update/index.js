@@ -33,15 +33,14 @@ export function UpdateUserDetail() {
         setLastName(response.data.lastName);
         setCpf(response.data.cpf);
         setStreet(response.data.street);
-        setBirthdate(
-          dayjs(new Date(response.data.birthdate)).format("YYYY-MM-DD")
-        );
+        setBirthdate(dayjs(response.data.birthdate).format("YYYY-MM-DD"));
         setNeighborhood(response.data.neighborhood);
         setComplement(response.data.complement);
         setZipCode(response.data.zipCode);
         setCity(response.data.city);
         setState(response.data.state);
         setNumber(response.data.number);
+        console.log(birthdate);
       })
       .catch(() => {
         toast.error("Este usuário não possui detalhe");
@@ -152,13 +151,42 @@ export function UpdateUserDetail() {
             <div className="col-md-6">
               <label>
                 Estado
-                <input
+                <select
                   className="form-control"
-                  type="text"
-                  placeholder="Estado"
-                  value={state}
+                  id="UF"
+                  name="UF"
                   onChange={(e) => setState(e.target.value)}
-                />
+                  value={state}
+                >
+                  <option value="">Selecione</option>
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AP">AP</option>
+                  <option value="AM">AM</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="MG">MG</option>
+                  <option value="PA">PA</option>
+                  <option value="PB">PB</option>
+                  <option value="PR">PR</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SP">SP</option>
+                  <option value="SE">SE</option>
+                  <option value="TO">TO</option>
+                </select>
               </label>
               <label>
                 Cidade
