@@ -14,6 +14,7 @@ export function Purchase() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [userDetail, setUserDetail] = useState(null);
   const { userId } = useAuth();
+  const { removeAllProducts } = useCart();
 
   const navigate = useNavigate();
 
@@ -21,11 +22,11 @@ export function Purchase() {
     if (!userId) {
       navigate("/");
     }
-    api.get("/payment-method").then(response => {
+    api.get("/payment-method").then((response) => {
       setPaymentMethods(response.data);
       console.log(response);
     });
-    api.get(`/users-detail/${userId}`).then(response => {
+    api.get(`/users-detail/${userId}`).then((response) => {
       setUserDetail(response.data);
     });
   }, []);
@@ -37,13 +38,13 @@ export function Purchase() {
       paymentMethod: { id: selectedPaymentMethod },
       deliveryRate: 0,
       total,
-      products: productList.map(product => ({
+      products: productList.map((product) => ({
         ...product,
         productQuantity: product.quantity,
         currentPrice: product.price,
         product: { id: product.id },
-        id: undefined
-      }))
+        id: undefined,
+      })),
     };
 
     console.log(body);
@@ -52,9 +53,10 @@ export function Purchase() {
       .post("/request", body)
       .then(() => {
         toast.success("Pedido realizado com sucesso");
+        removeAllProducts();
         navigate("/");
       })
-      .catch(error => {
+      .catch((error) => {
         toast.error("Falha ao realizar compra");
         console.error(error);
       });
@@ -69,31 +71,40 @@ export function Purchase() {
           <div className="purchase_form_input_group">
             <label for="paymentMethod">Método de Pagamento</label>
             <select
-              onChange={e => setSelectedPaymentMethod(e.target.value)}
+              onChange={(e) => setSelectedPaymentMethod(e.target.value)}
               value={selectedPaymentMethod}
               name="paymentMethod"
               id="paymentMethod"
             >
               <option value="0">Método de pagamento</option>
-              {paymentMethods.map(paymentMethod => (
+              {paymentMethods.map((paymentMethod) => (
                 <option key={paymentMethod.id} value={paymentMethod.id}>
                   {paymentMethod.description}
                 </option>
               ))}
             </select>
             <h4>Endereço de entrega</h4>
-            <p>Rua: {userDetail && userDetail.street}</p>
-            <p>Bairro: {userDetail && userDetail.neighborhood}</p>
-            <p>CEP: {userDetail && userDetail.zipCode}</p>
-            <p>Cidade: {userDetail && userDetail.city}</p>
-            <p>Estado: {userDetail && userDetail.state}</p>
+            <p>
+              <strong>Rua:</strong> {userDetail && userDetail.street}
+              <br />
+              <strong>Número:</strong> {userDetail && userDetail.number}
+              <br />
+              <strong>Bairro:</strong> {userDetail && userDetail.neighborhood}
+              <br />
+              <strong>CEP:</strong> {userDetail && userDetail.zipCode}
+              <br />
+              <strong>Cidade:</strong> {userDetail && userDetail.city}
+              <br />
+              <strong>Estado:</strong> {userDetail && userDetail.state}
+              <br />
+            </p>
           </div>
           <div className="purchase_form_action">
             <h2>
               Total:
               {Number(total).toLocaleString("pt-BR", {
                 style: "currency",
-                currency: "BRL"
+                currency: "BRL",
               })}
             </h2>
             <button type="submit">Finalizar compra</button>
