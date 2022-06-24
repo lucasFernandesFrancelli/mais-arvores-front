@@ -91,7 +91,7 @@
 
 }
 
-@media (min-width: 500px) {
+@media (max-width: 600px) {
   .register_form {
     height: 65vh;
     width: 60vw;
@@ -99,10 +99,19 @@
     margin-top: 30%;
   }
 
+  .register_form h1{
+    font-size: 40px;
+    padding-top: 60px;
+  }
+
+  .register_form_fields input{
+    font-size: 15px;
+  }
+
   .register_form_button {
     height: 50px;
     width: 60%;
-    margin-bottom: 5px;
+    margin-bottom: 60px;
     background-color: green;
     border-radius: 5px;
     color: white;

@@ -126,6 +126,27 @@
   }
 }
 
+@media (max-width: 600px) {
+  .products_list {
+    margin: 2rem 0;
+  }
+
+  .products_list ul {
+    display: grid;
+    padding: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .products_header_search input {
+    width: 240px;
+    margin-left: 1px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
 @media (min-width: 1280px) {
   .products_list {
     margin: 2rem 0;
