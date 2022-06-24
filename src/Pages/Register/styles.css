@@ -94,7 +94,7 @@
 @media (max-width: 600px) {
   .register_form {
     height: 65vh;
-    width: 60vw;
+    width: 75vw;
     margin: auto;
     margin-top: 30%;
   }
