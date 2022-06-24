@@ -94,6 +94,49 @@ input:hover {
 }
 
 
+@media (max-width: 600px) {
+  .cadastro_form form {
+    height: 65vh;
+    width: 1000px;
+    margin: auto;
+    margin-top: 30%;
+  }
+
+  .cadastro-label  {
+    display: flex;
+    flex-direction: column;
+    color: #579200;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 33%;
+    margin-top: 2%;
+    width: 80vw;
+  }
+
+  .cadastro-label-file {
+    display: flex;
+    flex-direction: column;
+    color: #579200;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 2%;
+    width: 60vw;
+  }
+
+
+
+
+}
+
+@media (min-width: 1280px) {
+  .cadastro-form {
+    height: 65vh;
+    width: 25vw;
+    margin: auto;
+    margin-top: 5%;
+  }
+}
+
 #Up_img_label {
   background-color: #579200;
   border-radius: 5px;
